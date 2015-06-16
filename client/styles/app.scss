@@ -1,0 +1,27 @@
+$primary-color: #2ba6cb;
+
+body {
+  font-family: sans-serif;
+}
+
+nav {
+  ul {
+    float: right;
+    li {
+      background-color: $primary-color;
+      padding: 10px;
+      margin: 10px;
+      display: inline;
+
+      a {
+        display: inline;
+        color: white;
+      }
+
+      p {
+        display: inline;
+        color: white;
+      }
+    }
+  }
+}
