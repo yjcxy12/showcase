@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width">
 
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css"> -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- build:css app.css -->
 
     <!-- bower:css -->
     <!-- endinject -->
-
     <link rel="stylesheet" href="styles/css/app.css">
 
     <!-- endbuild -->
@@ -21,11 +21,7 @@
   </head>
   <body>
 
-    <strong>showcase</strong>
-
-    <nav-bar></nav-bar>
-
-    <div ng-view></div>
+    <div class="main-display" ng-view></div>
 
     <!-- build:js app.js -->
 
@@ -48,6 +44,7 @@
     <script src="views/home/home.controller.js"></script>
     <script src="services/auth/auth.js"></script>
     <script src="directives/nav-bar/nav-bar.directive.js"></script>
+    <script src="directives/nav-bar/nav-bar.controller.js"></script>
     <!-- endinject -->
 
     <!-- endbuild -->

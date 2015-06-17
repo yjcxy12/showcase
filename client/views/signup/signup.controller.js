@@ -7,12 +7,10 @@ angular.module('showcase')
 
     angular.extend(vm, {
 
-      name: 'SignupCtrl',
-
       /**
        * User credentials
        */
-      user: { email: 'test@test.com', password: 'test' },
+      user: { email: '', password: '' },
 
       /**
        * Signup

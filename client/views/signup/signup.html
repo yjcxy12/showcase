@@ -1,17 +1,24 @@
-<div>
-  {{ vm.name }}
+<div class="top-background">
+  <div class="title">
+    <h1>SHOWCASE</h1>
+    <h3>Where everyone share knowledge</h3>
+  </div>
+  <div class="sign-form">
+    <form ng-submit="vm.signup()">
+      <div class="form-input">
+        <input type="email" ng-model="vm.user.email" placeholder="email">
+      </div>
+      <div class="form-input">
+        <input type="password" ng-model="vm.user.password" placeholder="password">
+      </div>
+      <button class="btn" type="submit">
+        Signup
+      </button>
+    </form>
+  </div>
+  
 </div>
 
-<form ng-submit="vm.signup()">
-  <input type="email"
-         ng-model="vm.user.email"
-         placeholder="email">
-  <input type="password"
-         ng-model="vm.user.password"
-         placeholder="password">
-  <button type="submit">
-    signup
-  </button>
-</form>
+
 
 <pre ng-if="vm.error">{{ vm.error | json }}</pre>
