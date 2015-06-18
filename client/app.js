@@ -51,7 +51,7 @@ angular.module('showcase', [
     $rootScope.$on('$routeChangeStart', function (event, next) {
       Auth.isReadyLogged().catch(function () {
         if (next.authenticate) {
-          $location.path('/');
+          $location.path('/signup');
         }
       });
     });

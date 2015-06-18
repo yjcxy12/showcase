@@ -1,24 +1,56 @@
-<div class="top-background">
-  <div class="title">
-    <h1>SHOWCASE</h1>
-    <h3>Where everyone share knowledge</h3>
-  </div>
-  <div class="sign-form">
-    <form ng-submit="vm.signup()">
-      <div class="form-input">
-        <input type="email" ng-model="vm.user.email" placeholder="email">
+<div class="jumbotron top-background">
+  <div class="container">
+    <div class="col-sm-8 top-title">
+      <h1>SHOWCASE</h1>
+      <h4>Share knowledge</h4>
+    </div>
+    
+    <div class="col-sm-4">
+
+      <div class="clearfix">
+        <button class="btn btn-success pull-right" id="signin-button" ng-click="vm.isSignin = !vm.isSignin">{{vm.isSignin? "Login" : "Sign up"}} 
+          <span class="fa fa-arrow-right"></span>
+        </button>
       </div>
-      <div class="form-input">
-        <input type="password" ng-model="vm.user.password" placeholder="password">
-      </div>
-      <button class="btn" type="submit">
-        Signup
-      </button>
-    </form>
+      
+      <form ng-if="!vm.isSignin" class="slide">
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email" ng-model="vm.user.email">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Username" ng-model="vm.user.username">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" ng-model="vm.user.password">
+        </div>
+        <button class="btn btn-success full-length" ng-click="signup()">Sign up</button>
+      </form>
+
+      <form ng-if="vm.isSignin" class="slide">
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email" ng-model="vm.user.email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" ng-model="vm.user.password">
+        </div>
+        <div class="form-group">
+          <label class="checkbox">
+            <input type="checkbox" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span><iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe></span>
+            Remember Me
+          </label>
+        </div>
+        <button class="btn btn-success full-length" ng-click="signin()">Login</button>
+      </form>
+      
+    </div>
   </div>
-  
 </div>
 
-
-
-<pre ng-if="vm.error">{{ vm.error | json }}</pre>
+<div class="container">
+  <div class="content">
+    <h3>Topics</h3>
+    <div>
+      <a ng-repeat="topic in vm.topics" ng-href="/topics/{{vm.topicUrl(topic.name)}}" class="topic-a">{{topic.name}}</a>
+    </div>
+  </div>
+</div>
