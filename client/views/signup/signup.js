@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('showcase')
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/signup', {
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('signup', {
+      	url: '/signup',
         templateUrl: 'views/signup/signup.html',
         controller: 'SignupCtrl',
         controllerAs: 'vm'

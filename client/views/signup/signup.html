@@ -8,7 +8,7 @@
     <div class="col-sm-4">
 
       <div class="clearfix">
-        <button class="btn btn-success pull-right" id="signin-button" ng-click="vm.isSignin = !vm.isSignin">{{vm.isSignin? "Login" : "Sign up"}} 
+        <button class="btn btn-success pull-right" id="signin-button" ng-click="vm.isSignin = !vm.isSignin">{{vm.isSignin? "Sign up" : "Login"}} 
           <span class="fa fa-arrow-right"></span>
         </button>
       </div>
@@ -23,7 +23,7 @@
         <div class="form-group">
           <input type="password" class="form-control" placeholder="Password" ng-model="vm.user.password">
         </div>
-        <button class="btn btn-success full-length" ng-click="signup()">Sign up</button>
+        <button class="btn btn-success full-length" ng-click="vm.signup()">Sign up</button>
       </form>
 
       <form ng-if="vm.isSignin" class="slide">
@@ -39,7 +39,8 @@
             Remember Me
           </label>
         </div>
-        <button class="btn btn-success full-length" ng-click="signin()">Login</button>
+        <button class="btn btn-success full-length" ng-click="vm.signin()">Login</button>
+        <label class="label label-danger" ng-if="vm.error">{{vm.error.message}}</label>
       </form>
       
     </div>

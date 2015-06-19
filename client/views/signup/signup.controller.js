@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('showcase')
-  .controller('SignupCtrl', function ($location, Auth, Topic) {
+  .controller('SignupCtrl', function ($state, Auth, Topic) {
 
     var vm = this;
 
@@ -10,7 +10,7 @@ angular.module('showcase')
       /**
        * User credentials
        */
-      user: { email: '', password: '' },
+      user: { email: '', username: '', password: '' },
 
       topics: [],
 
@@ -19,7 +19,7 @@ angular.module('showcase')
       signup: function () {
         Auth.signup(vm.user)
           .then(function () {
-            $location.path('/');
+            $state.go('home');
           })
           .catch(function (err) {
             vm.error = err;
@@ -28,11 +28,14 @@ angular.module('showcase')
 
       signin: function () {
         Auth.login(vm.user)
-          .then(function () {
-            $location.path('/');
+          .then(function (res) {
+            $state.go('home');
           })
           .catch(function (err) {
+            vm.isSignin = true;
             vm.error = err;
+            $state.go('signup');
+            console.log(err.message);
           });
       },
 

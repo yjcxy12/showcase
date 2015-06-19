@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('showcase')
-  .controller('HomeCtrl', function () {
+  .controller('HomeCtrl', function ($state, Auth) {
 
     var vm = this;
 
@@ -9,4 +9,9 @@ angular.module('showcase')
       name: 'HomeCtrl'
     });
 
+    Auth.isReadyLogged().catch(function () {
+      $state.go('signup');
+    });
+
+    return vm;
   });

@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('showcase')
-  .controller('NavbarCtrl', function ($location) {
+  .controller('NavbarCtrl', function ($state) {
 
     var vm = this;
 
-	vm.changeUrl = function (url) {
-		$location.path('/' + url);
+	vm.changeUrl = function (state) {
+		$state.go(state);
 	};
 
 	return vm;

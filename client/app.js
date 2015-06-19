@@ -1,18 +1,15 @@
 'use strict';
 
 angular.module('showcase', [
-  'ngRoute',
+  'ui.router',
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ngAnimate'
 ])
-  .config(function ($routeProvider, $locationProvider, $httpProvider) {
+  .config(function ($urlRouterProvider, $locationProvider, $httpProvider) {
 
-    $routeProvider
-      .otherwise({
-        redirectTo: '/'
-      });
+    $urlRouterProvider.otherwise("/signup");
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
@@ -32,7 +29,7 @@ angular.module('showcase', [
 
       responseError: function (response) {
         if (response.status === 401) {
-          $location.path('/login');
+          $location.url('/');
           $cookieStore.remove('token');
           return $q.reject(response);
         }
@@ -44,14 +41,14 @@ angular.module('showcase', [
     };
   })
 
-  .run(function ($rootScope, $location, Auth) {
+  .run(function ($rootScope, $state, Auth) {
 
     $rootScope.Auth = Auth;
 
     $rootScope.$on('$routeChangeStart', function (event, next) {
       Auth.isReadyLogged().catch(function () {
         if (next.authenticate) {
-          $location.path('/signup');
+          $state.go('signup');
         }
       });
     });
