@@ -1,17 +1,21 @@
 'use strict';
 
 angular.module('showcase')
-  .controller('HomeCtrl', function ($state, Auth) {
+  .controller('HomeCtrl', function ($state, Auth, Post) {
 
     var vm = this;
 
-    angular.extend(vm, {
-      name: 'HomeCtrl'
-    });
-
-    Auth.isReadyLogged().catch(function () {
+    Auth.isReadyLogged()
+    .then(function () {
+      Post.getPosts()
+      .then(function (res) {
+        vm.postList = res;
+      });
+    })
+    .catch(function () {
       $state.go('signup');
     });
 
+    
     return vm;
   });

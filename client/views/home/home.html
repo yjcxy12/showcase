@@ -1,4 +1,26 @@
 <nav-bar ng-controller="NavbarCtrl as vm"></nav-bar>
-<div>
-  {{ vm.name }}
+<div class="container">
+	<div class="col-sm-8 main-content">
+		<div class="top-bar">
+			<span>Latest</span>
+			<span class="pull-right">Settings</span>
+		</div>
+		<div class="post" ng-repeat="post in vm.postList">
+			<div class="col-sm-1 user-icon">icon</div>
+			<div class="col-sm-11 post-content">
+				<div class="post-title">{{post.title}}</div>
+				<div class="post-author">{{post.author}}</div>
+				<div class="post-less">{{post.less}}</div>
+				<div class="post-footer"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4 side-bar">
+		<ul class="list-group" id="my-util">
+			<li class="list-group-item">My draft</li>
+			<li class="list-group-item">My bookmark</li>
+			<li class="list-group-item">My watching posts</li>
+			<li class="list-group-item">My invitations</li>
+		</ul>
+	</div>
 </div>
